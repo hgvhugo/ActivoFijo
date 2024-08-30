@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivoFijo", "ActivoFijo.csproj", "{88B1AD39-C4BC-43E1-A9D0-752E8C886A7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88B1AD39-C4BC-43E1-A9D0-752E8C886A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B1AD39-C4BC-43E1-A9D0-752E8C886A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B1AD39-C4BC-43E1-A9D0-752E8C886A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B1AD39-C4BC-43E1-A9D0-752E8C886A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {063B5A2E-768C-4643-9219-69A2ADADADD6}
+	EndGlobalSection
+EndGlobal

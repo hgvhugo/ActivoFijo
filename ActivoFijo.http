@@ -1,0 +1,6 @@
+@ActivoFijo_HostAddress = http://localhost:5056
+
+GET {{ActivoFijo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

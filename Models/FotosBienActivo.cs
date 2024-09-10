@@ -15,7 +15,6 @@ namespace ActivoFijo.Models
 
         public int TipoFotoId { get; set; } // 1 = frente, 2 = trasera, 3 = lateral, 4 = interior , 5 = aerea
 
-        public RegistroBienes RegistroBienes { get; set; }
 
     }
 }

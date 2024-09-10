@@ -37,9 +37,14 @@ namespace ActivoFijo.Middlewares
                 _logger.LogError(ex, ex.Message);
                 await HandleExceptionAsync(context, HttpStatusCode.BadRequest, ex.Message);
             }
-            catch (Exception ex)
+            catch(InvalidOperationException ex)
             {
                 _logger.LogError(ex, ex.Message);
+                await HandleExceptionAsync(context, HttpStatusCode.BadRequest, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Excepción no manejada capturada en el middleware de manejo de excepciones.");
                 await HandleExceptionAsync(context, HttpStatusCode.InternalServerError, "Ocurrió un error en el servidor, intente más tarde");
             }
         }

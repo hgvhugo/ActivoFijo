@@ -12,7 +12,7 @@
         public async Task InvokeAsync(HttpContext context)
         {
             var ipAddress = context.Connection.RemoteIpAddress?.ToString();
-            var usuario = ""; //context.User.Identity.Name; // Asumiendo que estás usando autenticación
+            var usuario = "Admin"; //context.User.Identity.Name; // Asumiendo que estás usando autenticación
             var fecha = DateTime.UtcNow;
 
             context.Items["IpAddress"] = ipAddress;

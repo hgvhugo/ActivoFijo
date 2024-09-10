@@ -7,11 +7,11 @@ namespace ActivoFijo.Models
     {
         public int EmpleadoId { get; set; }
          
-        public Empleado Empleado { get; set; }
+        //public Empleado Empleado { get; set; }
 
         public int UnidadAdministrativaId { get; set; }
 
-        public UnidadAdministrativa UnidadAdministrativa { get; set; }
+        //public UnidadAdministrativa UnidadAdministrativa { get; set; }
 
         public bool Activo { get; set; }
 

@@ -11,7 +11,7 @@
         public string TipoUnidad { get; set; }
 
 
-        public ICollection<EmpleadoUnidadAdministrativaDto> EmpleadoUnidadesAdministrativas { get; set; }
+        //public ICollection<EmpleadoUnidadAdministrativaDto> EmpleadoUnidadesAdministrativas { get; set; }
 
     }
 }

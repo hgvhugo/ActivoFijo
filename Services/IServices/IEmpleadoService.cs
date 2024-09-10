@@ -8,5 +8,8 @@ namespace ActivoFijo.Services.IServices
         Task<EmpleadoDto> ObtenerPorIdAsync(int id);
 
         Task<EmpleadoDto> CrearAsync(CreaEmpleadoDto empleadoDto,DatosUsuarioConectadoDto datosUsuarioConectado);
+
+        Task<IEnumerable<EmpleadoDto>> ObtenerTodosporUnidad(int unidadAdministrativaId);
+
     }
 }

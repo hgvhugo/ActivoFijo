@@ -12,16 +12,33 @@ namespace ActivoFijo.Config
         public static void AddCustomServices(this IServiceCollection services)
         {
             ///Repositorios
-            //services.AddScoped<IRegistroBienesRepository, IRegistroBienesRepository>();
             services.AddScoped<IRepositorioGenerico<Cucop>, RepositorioGenerico<Cucop>>();
             services.AddScoped<IRepositorioGenerico<Partida>, RepositorioGenerico<Partida>>();
             services.AddScoped<IRepositorioGenerico<Contrato>, RepositorioGenerico<Contrato>>();
             services.AddScoped<IRepositorioGenerico<Empleado>, RepositorioGenerico<Empleado>>();
+            services.AddScoped<IRepositorioGenerico<UnidadAdministrativa>, RepositorioGenerico<UnidadAdministrativa>>();
+            services.AddScoped<IRepositorioGenerico<EmpleadoUnidadAdministrativa>, RepositorioGenerico<EmpleadoUnidadAdministrativa>>();
+            services.AddScoped<IRepositorioGenerico<Camb>, RepositorioGenerico<Camb>>();
+            services.AddScoped<IRepositorioGenerico<Ubicacion>, RepositorioGenerico<Ubicacion>>();
+            //services.AddScoped<IRepositorioGenerico<RegistroBienes>, RepositorioGenerico<RegistroBienes>>();
+            services.AddScoped<IRegistroBienesRepository, RegistroBienesRepository>();
+            services.AddScoped<IRegistroBienesTempRepository, RegistroBienesTempRepository>();
+
+
+
+
+
+
 
             ///Servicios
-            
+
             services.AddAutoMapper(typeof(AppMapping));
             services.AddScoped<IEmpleadoService, EmpleadoService>();
+            services.AddScoped<IRegistroBienesService, RegistroBienesService>();
+            services.AddScoped<ExcelChunkReaderService>();
+
+            services.AddScoped<IUserContextService, UserContextService>();
+
 
         }
 

@@ -1,4 +1,5 @@
-﻿using ActivoFijo.Dtos;
+﻿using ActivoFijo.Config;
+using ActivoFijo.Dtos;
 using ActivoFijo.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -49,6 +50,13 @@ namespace ActivoFijo.Controllers
 
         }
 
+        [HttpGet]
+        [Route("unidad/{unidadAdministrativaId}")]
+        public async Task<ActionResult<IEnumerable<EmpleadoDto>>> ObtenerTodosporUnidad(int unidadAdministrativaId)
+        {
+            var empleados = await _empleadoService.ObtenerTodosporUnidad(unidadAdministrativaId);
+            return Ok(empleados);
+        }
 
     }
 }

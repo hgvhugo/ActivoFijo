@@ -20,9 +20,9 @@ namespace ActivoFijo.Dtos
 
         public int EstatusId { get; set; }
 
-        public string FotoBien { get; set; }
+        //public string FotoBien { get; set; }
 
-        public IFormFile FotoBienFile { get; set; }
+        //public IFormFile FotoBienFile { get; set; }
 
 
         [MaxLength(150, ErrorMessage = "La descripción no puede tener más de 150 caracteres.")]
@@ -36,12 +36,14 @@ namespace ActivoFijo.Dtos
 
         [MaxLength(50, ErrorMessage = "El número de serie no puede tener más de 50 caracteres.")]
         public string Serie { get; set; }
+        public int EstadoFisicoId { get; set; } //FK a  0.Malo, 1.Regular, 2.Bueno
 
-        public int PartidaId { get; set; }
 
-        public int CambId { get; set; }
+        //public int PartidaId { get; set; }
 
-        public int CucopId { get; set; }
+        //public int CambId { get; set; }
+
+        //public int CucopId { get; set; }
 
         public string NumeroContrato { get; set; }
 
@@ -53,13 +55,13 @@ namespace ActivoFijo.Dtos
 
         public double ValorDepreciado { get; set; }
 
-        public int UnidadAdministrativaId { get; set; }
+        //public int UnidadAdministrativaId { get; set; }
 
-        public int UbicacionId { get; set; }
+        //public int UbicacionId { get; set; }
 
-        public int EmpleadoId { get; set; }
+        //public int EmpleadoId { get; set; }
 
-        public int FotosId { get; set; }
+        //public int FotosId { get; set; }
 
         public bool Activo { get; set; }
 

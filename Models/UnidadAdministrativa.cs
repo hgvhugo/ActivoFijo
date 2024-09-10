@@ -27,7 +27,7 @@ namespace ActivoFijo.Models
 
         public ICollection<EmpleadoUnidadAdministrativa> EmpleadoUnidadAdministrativas { get; set; }
 
-        public RegistroBienes RegistroBienes { get; set; }
+        //public RegistroBienes RegistroBienes { get; set; }
 
 
     }

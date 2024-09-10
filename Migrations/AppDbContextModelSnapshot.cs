@@ -148,20 +148,16 @@ namespace ActivoFijo.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("ApellidoMaterno")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ApellidoPaterno")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Direccion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("datetime2");
@@ -174,18 +170,16 @@ namespace ActivoFijo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rfc")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Telefono")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UbicacionId")
+                    b.Property<int?>("UbicacionId")
                         .HasColumnType("int");
 
                     b.Property<string>("UsuarioModifica")
@@ -194,8 +188,14 @@ namespace ActivoFijo.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UbicacionId")
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
+
+                    b.HasIndex("Rfc")
                         .IsUnique();
+
+                    b.HasIndex("UbicacionId");
 
                     b.ToTable("tbl_empleados");
                 });
@@ -303,10 +303,10 @@ namespace ActivoFijo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Activo")
+                    b.Property<bool?>("Activo")
                         .HasColumnType("bit");
 
-                    b.Property<int>("CambId")
+                    b.Property<int?>("CambId")
                         .HasColumnType("int");
 
                     b.Property<string>("CodigoBien")
@@ -314,50 +314,48 @@ namespace ActivoFijo.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<int>("CucopId")
+                    b.Property<int?>("CucopId")
                         .HasColumnType("int");
 
                     b.Property<string>("Descripcion")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<int>("EmpleadoId")
+                    b.Property<int?>("EmpleadoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EstadoFisicoId")
                         .HasColumnType("int");
 
                     b.Property<int>("EstatusId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("FechaCreacion")
+                    b.Property<DateTime?>("FechaCreacion")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("FechaEfectos")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("FechaFactura")
+                    b.Property<DateTime?>("FechaFactura")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("FechaModificacion")
+                    b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FotoBien")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FotosId")
+                    b.Property<int?>("FotosId")
                         .HasColumnType("int");
 
                     b.Property<string>("IPAddress")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Marca")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Modelo")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -367,58 +365,145 @@ namespace ActivoFijo.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("NumeroContrato")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumeroFactura")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PartidaId")
+                    b.Property<int?>("PartidaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Serie")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("UbicacionId")
+                    b.Property<int?>("UbicacionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UnidadAdministrativaId")
+                    b.Property<int?>("UnidadAdministrativaId")
                         .HasColumnType("int");
 
                     b.Property<string>("UsuarioModifica")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("ValorDepreciado")
+                    b.Property<double?>("ValorDepreciado")
                         .HasColumnType("float");
 
-                    b.Property<double>("ValorFactura")
+                    b.Property<double?>("ValorFactura")
                         .HasColumnType("float");
+
+                    b.Property<string>("cargaId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CambId")
-                        .IsUnique();
+                    b.HasIndex("CambId");
 
-                    b.HasIndex("CucopId")
-                        .IsUnique();
+                    b.HasIndex("CucopId");
 
-                    b.HasIndex("EmpleadoId")
-                        .IsUnique();
+                    b.HasIndex("EmpleadoId");
 
-                    b.HasIndex("PartidaId")
-                        .IsUnique();
+                    b.HasIndex("PartidaId");
 
-                    b.HasIndex("UbicacionId")
-                        .IsUnique();
+                    b.HasIndex("UbicacionId");
 
-                    b.HasIndex("UnidadAdministrativaId")
-                        .IsUnique();
+                    b.HasIndex("UnidadAdministrativaId");
 
                     b.ToTable("tbl_registro_bienes");
+                });
+
+            modelBuilder.Entity("ActivoFijo.Models.RegistroBienesTemp", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CambId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CargaId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CodigoBien")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CucopId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EmpleadoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ErrorValidacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EstatusId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Exito")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("FechaEfectos")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaFactura")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FotoBien")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Marca")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Modelo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NombreBien")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeroContrato")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeroFactura")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PartidaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("Procesado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Serie")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UbicacionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UnidadAdministrativaId")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("ValorDepreciado")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("ValorFactura")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime?>("fechapeticion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ipaddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tmp_registro_bienes");
                 });
 
             modelBuilder.Entity("ActivoFijo.Models.Ubicacion", b =>
@@ -504,81 +589,61 @@ namespace ActivoFijo.Migrations
             modelBuilder.Entity("ActivoFijo.Models.Empleado", b =>
                 {
                     b.HasOne("ActivoFijo.Models.Ubicacion", "Ubicacion")
-                        .WithOne("Empleado")
-                        .HasForeignKey("ActivoFijo.Models.Empleado", "UbicacionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("UbicacionId");
 
                     b.Navigation("Ubicacion");
                 });
 
             modelBuilder.Entity("ActivoFijo.Models.EmpleadoUnidadAdministrativa", b =>
                 {
-                    b.HasOne("ActivoFijo.Models.Empleado", "Empleado")
+                    b.HasOne("ActivoFijo.Models.Empleado", null)
                         .WithMany("EmpleadoUnidadesAdministrativas")
                         .HasForeignKey("EmpleadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ActivoFijo.Models.UnidadAdministrativa", "UnidadAdministrativa")
+                    b.HasOne("ActivoFijo.Models.UnidadAdministrativa", null)
                         .WithMany("EmpleadoUnidadAdministrativas")
                         .HasForeignKey("UnidadAdministrativaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Empleado");
-
-                    b.Navigation("UnidadAdministrativa");
                 });
 
             modelBuilder.Entity("ActivoFijo.Models.FotosBienActivo", b =>
                 {
-                    b.HasOne("ActivoFijo.Models.RegistroBienes", "RegistroBienes")
+                    b.HasOne("ActivoFijo.Models.RegistroBienes", null)
                         .WithMany("FotosBienActivo")
                         .HasForeignKey("RegistroBienesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("RegistroBienes");
                 });
 
             modelBuilder.Entity("ActivoFijo.Models.RegistroBienes", b =>
                 {
                     b.HasOne("ActivoFijo.Models.Camb", "Camb")
-                        .WithOne("RegistroBienes")
-                        .HasForeignKey("ActivoFijo.Models.RegistroBienes", "CambId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("CambId");
 
                     b.HasOne("ActivoFijo.Models.Cucop", "Cucop")
-                        .WithOne("RegistroBienes")
-                        .HasForeignKey("ActivoFijo.Models.RegistroBienes", "CucopId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("CucopId");
 
                     b.HasOne("ActivoFijo.Models.Empleado", "Empleado")
-                        .WithOne("RegistroBienes")
-                        .HasForeignKey("ActivoFijo.Models.RegistroBienes", "EmpleadoId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("EmpleadoId");
 
                     b.HasOne("ActivoFijo.Models.Partida", "Partida")
-                        .WithOne("RegistroBienes")
-                        .HasForeignKey("ActivoFijo.Models.RegistroBienes", "PartidaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("PartidaId");
 
                     b.HasOne("ActivoFijo.Models.Ubicacion", "Ubicacion")
-                        .WithOne("RegistroBienes")
-                        .HasForeignKey("ActivoFijo.Models.RegistroBienes", "UbicacionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("UbicacionId");
 
                     b.HasOne("ActivoFijo.Models.UnidadAdministrativa", "UnidadAdministrativa")
-                        .WithOne("RegistroBienes")
-                        .HasForeignKey("ActivoFijo.Models.RegistroBienes", "UnidadAdministrativaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("UnidadAdministrativaId");
 
                     b.Navigation("Camb");
 
@@ -593,30 +658,9 @@ namespace ActivoFijo.Migrations
                     b.Navigation("UnidadAdministrativa");
                 });
 
-            modelBuilder.Entity("ActivoFijo.Models.Camb", b =>
-                {
-                    b.Navigation("RegistroBienes")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ActivoFijo.Models.Cucop", b =>
-                {
-                    b.Navigation("RegistroBienes")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ActivoFijo.Models.Empleado", b =>
                 {
                     b.Navigation("EmpleadoUnidadesAdministrativas");
-
-                    b.Navigation("RegistroBienes")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ActivoFijo.Models.Partida", b =>
-                {
-                    b.Navigation("RegistroBienes")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("ActivoFijo.Models.RegistroBienes", b =>
@@ -624,21 +668,9 @@ namespace ActivoFijo.Migrations
                     b.Navigation("FotosBienActivo");
                 });
 
-            modelBuilder.Entity("ActivoFijo.Models.Ubicacion", b =>
-                {
-                    b.Navigation("Empleado")
-                        .IsRequired();
-
-                    b.Navigation("RegistroBienes")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ActivoFijo.Models.UnidadAdministrativa", b =>
                 {
                     b.Navigation("EmpleadoUnidadAdministrativas");
-
-                    b.Navigation("RegistroBienes")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

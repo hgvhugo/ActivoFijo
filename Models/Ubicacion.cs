@@ -22,8 +22,8 @@ namespace ActivoFijo.Models
 
         public DateTime FechaModificacion { get; set; }
 
-        public ICollection<Empleado> Empleados { get; set; }
-        public ICollection<RegistroBienes> RegistroBienes { get; set; }
+        //public ICollection<Empleado> Empleados { get; set; }
+        //public ICollection<RegistroBienes> RegistroBienes { get; set; }
 
     }
 }

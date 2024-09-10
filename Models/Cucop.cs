@@ -22,8 +22,6 @@ namespace ActivoFijo.Models
         public DateTime FechaModificacion { get; set; }
 
  
-        public RegistroBienes RegistroBienes { get; set; }
-
 
     }
 }

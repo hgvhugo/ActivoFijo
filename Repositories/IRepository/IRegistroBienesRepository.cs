@@ -1,4 +1,6 @@
-﻿using ActivoFijo.Models;
+﻿using ActivoFijo.Dtos;
+using ActivoFijo.Dtos.ActivoFijo.Dtos;
+using ActivoFijo.Models;
 
 namespace ActivoFijo.Repositories.IRepository
 {
@@ -11,5 +13,11 @@ namespace ActivoFijo.Repositories.IRepository
         Task<RegistroBienes> DeleteRegistroBienes(int id);
 
         Task<RegistroBienes> GetRegistroBienesByCodigoBien(string codigoBien);
+
+        Task<IEnumerable<RegistroBienes>> GetRegistroBienesByUnidadAdministrativaId(int unidadAdministrativaId);
+        Task<IEnumerable<RegistroBienes>> GetRegistroBienesByCriteria(int unidadAdministrativaId, int? estadoId = null, int? partidaId = null, int? estatusId = null, int? cambId = null, string? contrato = null, int? cucopId = null);
+        Task<IEnumerable<ContadorBienesPorUnidadDto>> ObtenerConteosPorUnidadAsync();
     }
+
+
 }

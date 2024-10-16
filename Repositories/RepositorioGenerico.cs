@@ -1,4 +1,6 @@
 ﻿using ActivoFijo.Data;
+using ActivoFijo.Dtos.ActivoFijo.Dtos;
+using ActivoFijo.Models;
 using ActivoFijo.Repositories.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
@@ -57,6 +59,8 @@ namespace ActivoFijo.Repositories
             return await query.Where(criteria).ToListAsync();
         }
 
+        
+
         //private IQueryable<T> IncludeNavigationProperties(IQueryable<T> query)
         //{
         //    var entityType = _context.Model.FindEntityType(typeof(T));
@@ -69,5 +73,8 @@ namespace ActivoFijo.Repositories
 
         //    return query;
         //}
+
+
+     
     }
 }

@@ -14,10 +14,18 @@ namespace ActivoFijo.Repositories.IRepository
 
         Task<RegistroBienes> GetRegistroBienesByCodigoBien(string codigoBien);
 
+        Task<Boolean> ExisteArchivoCargado (string nombreArchivo);
+
         Task<IEnumerable<RegistroBienes>> GetRegistroBienesByUnidadAdministrativaId(int unidadAdministrativaId);
         Task<IEnumerable<RegistroBienes>> GetRegistroBienesByCriteria(int unidadAdministrativaId, int? estadoId = null, int? partidaId = null, int? estatusId = null, int? cambId = null, string? contrato = null, int? cucopId = null);
         Task<IEnumerable<ContadorBienesPorUnidadDto>> ObtenerConteosPorUnidadAsync();
+        Task<IEnumerable<RegistroBienes>> GetRegistroBienesByIds(List<int> ids);
+
+        Task<IEnumerable<RegistroBienes>> GetRegistroBienesByEmpleadoIdSinFirmar(int empleadoId);
+
+
     }
+
 
 
 }

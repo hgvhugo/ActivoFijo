@@ -3,6 +3,8 @@ using ActivoFijo.Repositories;
 using ActivoFijo.Repositories.IRepository;
 using ActivoFijo.Services;
 using ActivoFijo.Services.IServices;
+using DinkToPdf.Contracts;
+using DinkToPdf;
 
 namespace ActivoFijo.Config
 {
@@ -25,11 +27,6 @@ namespace ActivoFijo.Config
             services.AddScoped<IRegistroBienesTempRepository, RegistroBienesTempRepository>();
 
 
-
-
-
-
-
             ///Servicios
 
             services.AddAutoMapper(typeof(AppMapping));
@@ -38,7 +35,11 @@ namespace ActivoFijo.Config
             services.AddScoped<ExcelChunkReaderService>();
 
             services.AddScoped<IUserContextService, UserContextService>();
+            services.AddScoped<IFirmaElectronicaService, FirmaElectronicaService>();
 
+            services.AddScoped<ICorreoService, CorreoService>();
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+            services.AddTransient<PdfService>();
 
         }
 

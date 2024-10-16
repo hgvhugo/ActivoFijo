@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
+﻿using ActivoFijo.Dtos.ActivoFijo.Dtos;
+using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
 namespace ActivoFijo.Repositories.IRepository
@@ -19,5 +20,6 @@ namespace ActivoFijo.Repositories.IRepository
         Task DeleteAsync(int id);
 
         Task<IEnumerable<T>> GetAllByCriteriaAsync(Expression<Func<T, bool>> criteria);
+ 
     }
 }

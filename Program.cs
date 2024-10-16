@@ -11,10 +11,14 @@ var corsSettings = builder.Configuration.GetSection("CorsSettings").Get<CorsSett
 
 
 // Add services to the container.
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//{
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("ActivoBD"));
+//});
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ActivoBD"));
-});
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ActivoBD")),
+    ServiceLifetime.Scoped);
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

@@ -4,6 +4,7 @@ using ActivoFijo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ActivoFijo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240918223335_camposdefirma")]
+    partial class camposdefirma
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -431,141 +434,6 @@ namespace ActivoFijo.Migrations
                     b.HasIndex("UnidadAdministrativaId");
 
                     b.ToTable("tbl_registro_bienes");
-                });
-
-            modelBuilder.Entity("ActivoFijo.Models.RegistroBienesLog", b =>
-                {
-                    b.Property<int>("LogId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LogId"));
-
-                    b.Property<bool?>("Activo")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("CadenaOriginalEmpleado")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CadenaOriginalResponsable")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CambId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CodigoBien")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CucopId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("EmpleadoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EstadoFisicoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EstatusId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("FechaCreacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("FechaEfectos")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("FechaFactura")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("FechaFirmaEmpleado")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("FechaFirmaResponsable")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("FechaModificacionLog")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FirmaEmpleado")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirmaResponsable")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FotoBien")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("FotosId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("IPAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IPAddressLog")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Marca")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Modelo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NombreArchivo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NombreBien")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumeroContrato")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumeroFactura")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PartidaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Serie")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("UbicacionId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UnidadAdministrativaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UsuarioModifica")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UsuarioModificaLog")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double?>("ValorDepreciado")
-                        .HasColumnType("float");
-
-                    b.Property<double?>("ValorFactura")
-                        .HasColumnType("float");
-
-                    b.Property<string>("cargaId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("motivo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("LogId");
-
-                    b.ToTable("tbl_registro_bienes_log");
                 });
 
             modelBuilder.Entity("ActivoFijo.Models.RegistroBienesTemp", b =>

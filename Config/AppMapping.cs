@@ -30,6 +30,7 @@ namespace ActivoFijo.Config
             CreateMap<RegistroBienesTemp, RegistroBienesTempDto>().ReverseMap();
             CreateMap<RegistroBienes, RegistroBienesDto>().ReverseMap();
             CreateMap<CreaRegistroBienesDto, RegistroBienes>();
+            CreateMap<RegistroBienes, RegistroBienesLog>();
 
 
         }

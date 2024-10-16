@@ -67,6 +67,13 @@ namespace ActivoFijo.Repositories
             return await _context.RegistroBienes.FirstOrDefaultAsync(x => x.CodigoBien.Trim() == codigo.Trim() );
         }
 
+
+        public async Task<Boolean> ExisteArchivoCargado(string nombreArchivo)
+        {
+            return await _context.RegistroBienes.AnyAsync(x => x.NombreArchivo == nombreArchivo);
+        }
+
+
         public async Task<IEnumerable<RegistroBienes>> GetRegistroBienesByUnidadAdministrativaId(int unidadAdministrativaId)
         {
             var query = _context.RegistroBienes.AsQueryable();
@@ -138,5 +145,24 @@ namespace ActivoFijo.Repositories
 
             return conteos;
         }
+
+        public async Task<IEnumerable<RegistroBienes>> GetRegistroBienesByIds(List<int> ids)
+        {
+            var query = _context.RegistroBienes.AsQueryable();
+            query = RepositoryUtils.IncludeNavigationProperties(_context, query);
+            query = query.Where(rb => ids.Contains(rb.Id));
+            return await query.ToListAsync();
+        }
+
+        public async Task<IEnumerable<RegistroBienes>> GetRegistroBienesByEmpleadoIdSinFirmar(int empleadoId)
+        {
+            var query = _context.RegistroBienes.AsQueryable();
+            query = RepositoryUtils.IncludeNavigationProperties(_context, query);
+            query = query.Where(rb => rb.EmpleadoId == empleadoId && rb.FechaFirmaResponsable == null
+                && rb.EstatusId== 1 && rb.Activo == true && rb.FirmaEmpleado != null
+            );
+            return await query.ToListAsync();
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using ActivoFijo.Models;
 
 namespace ActivoFijo.Dtos
@@ -63,14 +64,19 @@ namespace ActivoFijo.Dtos
 
         //public int FotosId { get; set; }
 
+        [JsonIgnore]
         public bool Activo { get; set; }
 
+        [JsonIgnore]
         public DateTime FechaCreacion { get; set; }
 
+        [JsonIgnore]
         public string UsuarioModifica { get; set; }
 
+        [JsonIgnore]
         public string IPAddress { get; set; }
 
+        [JsonIgnore]
         public DateTime FechaModificacion { get; set; }
 
         public UnidadAdministrativaDto UnidadAdministrativa { get; set; }

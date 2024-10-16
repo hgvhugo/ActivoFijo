@@ -34,6 +34,7 @@ namespace ActivoFijo.Models
         public string? ErrorValidacion { get; set; } // Mensaje de error de validación
         public string? CargaId { get; set; } // Identificador de la carga
 
+        
         public string? username { get; set; }
 
         public string? ipaddress { get; set; }

@@ -24,6 +24,7 @@ namespace ActivoFijo.Data
 
         public DbSet<RegistroBienesTemp> RegistroBienesTemp { get; set; }
 
+        public DbSet<RegistroBienesLog> RegistroBienesLog { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 
